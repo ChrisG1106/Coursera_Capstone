@@ -1900,15 +1900,15 @@ def calculateRebalancingDF(fcn_dict_RebalancingResult,
         * investment_capital / 100
     
     # depending on the chosen cost setup the corresponding column gets subtracted
-    str_costs = ' | no rebalancing costs'
+    str_costs = ' | no reb. costs'
     str_channel = 'SUM_DEPOT_COSTS_ABS'
     if fcn_consider_costs == 'abs':
         df_investB1['SUM_rebalanced_DEPOT'] = df_investB1['SUM_rebalanced_DEPOT'] - df_investB1['SUM_DEPOT_COSTS_ABS']
-        str_costs = ' | costs absolute = ' + str(fcn_rebalance_costs_abs)
+        str_costs = ' | costs abs. = ' + str(fcn_rebalance_costs_abs)
         str_channel = 'SUM_DEPOT_COSTS_ABS'
     elif fcn_consider_costs == 'perc':
         df_investB1['SUM_rebalanced_DEPOT'] = df_investB1['SUM_rebalanced_DEPOT'] - df_investB1['SUM_DEPOT_COSTS_PERC']
-        str_costs = ' | costs percentage = ' + str(fcn_rebalance_costs_percentage*100) + ' %'
+        str_costs = ' | costs % = ' + str(fcn_rebalance_costs_percentage*100) + ' %'
         str_channel = 'SUM_DEPOT_COSTS_PERC'
         
     # plot line chart for depot, rebalanced depot and the single indices,
@@ -1921,24 +1921,24 @@ def calculateRebalancingDF(fcn_dict_RebalancingResult,
                               ]],
                 'Rebalancing effects for portfolio',eval_no,
                 'Initial year: ' + str(starting_year)
-                + ' | Rebalancing Step: ' + str(step_Month) + ' [months]'
-                + ' | Investment Capital: ' + str(investment_capital) + ' [USD]'
+                + ' | Reb. Step: ' + str(step_Month) + ' [months]'
+                + ' | StartCapital: ' + str(investment_capital) + ' [USD]'
                 + str_costs
-                + '\n Frequency World LMC / EM LMC / World SC: ' 
-                + str(fcn_frequency_World_LMC*100) + "%"
-                + ' / ' + str(fcn_frequency_EM_LMC*100) + "%"
-                + ' / ' + str(fcn_frequency_World_SC*100)  + "%"               
+                + '\n Freq. World LMC-EM LMC-World SC: ' 
+                + '{:.0f}'.format(fcn_frequency_World_LMC*100) + "%"
+                + '-' + '{:.0f}'.format(fcn_frequency_EM_LMC*100) + "%"
+                + '-' + '{:.0f}'.format(fcn_frequency_World_SC*100)  + "%"               
                 ,'DATE',
                 'value','Date','Cumulated Capital in Portfolio [USD]','variable','PRGn_r') 
     
     str_label = 'Rebalanced Depot - Hold Depot: ' \
                 + ' | Initial year: ' + str(starting_year) \
-                + ' | Rebalancing Step: ' + str(step_Month) + ' [months]' \
-                + ' | Investment Capital: ' + str(investment_capital) + ' [USD]' \
-                + ' | Frequency World LMC / EM LMC / World SC: '  \
-                + str(fcn_frequency_World_LMC*100) \
-                + ' / ' + str(fcn_frequency_EM_LMC*100) \
-                + ' / ' + str(fcn_frequency_World_SC*100) \
+                + ' | Reb. Step: ' + str(step_Month) + ' [months]' \
+                + ' | StartCapital: ' + str(investment_capital) + ' [USD]' \
+                + ' | Freq. World LMC-EM LMC-World SC: '  \
+                + '{:.0f}'.format(fcn_frequency_World_LMC*100) \
+                + '-' + '{:.0f}'.format(fcn_frequency_EM_LMC*100) \
+                + '-' + '{:.0f}'.format(fcn_frequency_World_SC*100) \
                 + str_costs
     
     # get the difference of the normal depot vs. the rebalanced depot
@@ -1951,13 +1951,13 @@ def calculateRebalancingDF(fcn_dict_RebalancingResult,
                 'Rebalanced Depot - Hold Depot'               
                 ,eval_no,
                 'Initial year: ' + str(starting_year)
-                + ' | Rebalancing Step: ' + str(step_Month) + ' [months]'
-                + ' | Investment Capital: ' + str(investment_capital) + ' [USD]'
+                + ' | Reb. Step: ' + str(step_Month) + ' [months]'
+                + ' | StartCapital: ' + str(investment_capital) + ' [USD]'
                 + str_costs
-                + '\n Frequency World LMC / EM LMC / World SC: '  \
-                + str(fcn_frequency_World_LMC*100) + "%" \
-                + ' / ' + str(fcn_frequency_EM_LMC*100) + "%" \
-                + ' / ' + str(fcn_frequency_World_SC*100) + "%"
+                + '\n Freq. World LMC-EM LMC-World SC: '  \
+                + '{:.0f}'.format(fcn_frequency_World_LMC*100) + "%" \
+                + '-' + '{:.0f}'.format(fcn_frequency_EM_LMC*100) + "%" \
+                + '-' + '{:.0f}'.format(fcn_frequency_World_SC*100) + "%"
                 ,
                 'DATE',
                 'value','Date','Profit by rebalancing [USD]','variable','PRGn_r') 
