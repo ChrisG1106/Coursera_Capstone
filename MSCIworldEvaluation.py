@@ -44,11 +44,9 @@ pd.set_option('display.max_columns', None)
 # The data is recorded in monthly intervals.
 
 
-
-
-# url = 'https://drive.google.com/file/d/1tGC-zZPJZVu68QPApb1Jl6lf_NL4d4Gm/view?usp=sharing'
-# urllib.request.urlretrieve(url, "test.xlsx")
-
+# Should the graphs be saved locally?
+boolSaveGraphsLocally = False
+# If TRUE:
 # Define the folder, in which the graphs should be saved.
 # Be aware, that the folder must exist.
 strFolderPath_Graphs = 'C:/Users/Chris2015/Desktop/SpyderPython/Graphs/'
@@ -289,7 +287,10 @@ def plotLabelling(plot,plt,x_label,y_label,title,eval_no):
     
     sns.despine() # remove top and right border frame
     plt.show()
-    plot.get_figure().savefig(strSavePath(title,eval_no))
+    
+    # check, if graph should be saved locally and do so for TRUE
+    if boolSaveGraphsLocally:
+        plot.get_figure().savefig(strSavePath(title,eval_no))
     plot.get_figure().clf()
 
 #----------------------------------------------------------------------
